@@ -13,7 +13,8 @@ public class MainFunction {
         // HeapSort.heapSort(input);
         // MergeSortPlus.mergeSort(input);
         // QuickSort.quickSort(input, 0, input.length - 1);
-        InsertionSort.insertionSort(input);
+        // InsertionSort.insertionSort(input);
+        ShellSort.shellSort(input);
         Arrays.stream(input).forEach(System.out::println);
     }
 
