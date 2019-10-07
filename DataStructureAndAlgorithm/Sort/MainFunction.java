@@ -2,7 +2,7 @@ package DataStructureAndAlgorithm.Sort;
 
 import java.util.*;
 
-public class MainFunction {
+class MainFunction {
 
     public static void main(String[] args) {
         int[] input = new int[100];
@@ -14,7 +14,7 @@ public class MainFunction {
         // MergeSortPlus.mergeSort(input);
         // QuickSort.quickSort(input, 0, input.length - 1);
         // InsertionSort.insertionSort(input);
-        // ShellSort.shellSort(input);
+        ShellSort.shellSort(input);
         Arrays.stream(input).forEach(System.out::println);
     }
 }

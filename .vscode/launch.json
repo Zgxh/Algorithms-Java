@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Huffman",
+            "request": "launch",
+            "mainClass": "DataStructureAndAlgorithm.Greedy.Huffman",
+            "projectName": "learningTest_25ef6d5e"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - MainFunction",
+            "request": "launch",
+            "mainClass": "DataStructureAndAlgorithm.Greedy.MainFunction",
+            "projectName": "learningTest_25ef6d5e"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - MainFunction",
             "request": "launch",
             "mainClass": "DataStructureAndAlgorithm.Sort.MainFunction"
