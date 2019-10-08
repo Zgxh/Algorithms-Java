@@ -3,7 +3,7 @@ package DataStructureAndAlgorithm.Greedy;
 import java.util.PriorityQueue;
 
 public class Huffman {
-    private static final int R = 256; //R为字母表，但是为什么要256个呢？
+    private static final int R = 128; //R为字母表
 
     /**
      * 定义Huffman树的结点，实现Comparable接口，为了方便建堆
@@ -132,6 +132,7 @@ public class Huffman {
                     }
                 } else {
                     System.out.println("解码出现错误，数组长度越界！");
+                    return;
                 }
             }
             result += x.ch;
@@ -140,8 +141,8 @@ public class Huffman {
     }
 
     public static void main(String[] args) {
-        String input = "woshinidie";
-        String binCode = "00110100001001110111101011011";
+        String input = "woshinidie.;'./435,.,456./'";
+        String binCode = "11111110001100111010010110110100110001001101100111010001001011011111110001101010010100111001111001001011000";
         Node root = compress(input);
         expand(binCode, root, input.length());
     }
