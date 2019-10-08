@@ -78,12 +78,13 @@ public class Huffman {
     }
 
     /**
-     * 压缩数据: 输出字符压缩后的二进制字符串码
+     * 压缩数据。按理说应该对Huffman树也进行编码，这里为了方便取消了对Huffman树的编码，
+     * 即Huffman树直接作为返回参数。
      * 这里只是模拟一下编码过程，所以采用了String来保存编码后的值，实质并没有压缩
      * @param s 待压缩的字符串
-     * @return 字符串编码后的01字符串
+     * @return Huffman树
      */
-    public static String compress(String s) {
+    public static Node compress(String s) {
         char[] input = s.toCharArray();
 
         //统计字符频次
@@ -104,14 +105,44 @@ public class Huffman {
         for (int i = 0; i < input.length; i++) {
             result += table[input[i]];
         }
-        return result;
+        System.out.println(result);
+        return root;
     }
 
-    
+    /**
+     * 对二进制码进行解码，得到原来的字符串。
+     * @param binCode 压缩得到的二进制码
+     * @param root 压缩过程中得到的Huffman树的根节点
+     * @param len 原字符串的长度
+     */
+    public static void expand(String binCode, Node root, int len) {
+        int index = 0;
+        int lenOfBin = binCode.length();
+        String result = "";
+        //依次解码len个字符
+        for (int i = 0; i < len; i++) {
+            //每次新解码一个字符都要重新返回根节点
+            Node x = root;
+            while (!x.isLeaf()) {
+                if (index < lenOfBin) {
+                    if (binCode.charAt(index++) == '0') {
+                        x = x.left;
+                    } else {
+                        x = x.right;
+                    }
+                } else {
+                    System.out.println("解码出现错误，数组长度越界！");
+                }
+            }
+            result += x.ch;
+        }
+        System.out.println(result);
+    }
 
     public static void main(String[] args) {
         String input = "woshinidie";
-        String output = compress(input);
-        System.out.println(output);
+        String binCode = "00110100001001110111101011011";
+        Node root = compress(input);
+        expand(binCode, root, input.length());
     }
 }
