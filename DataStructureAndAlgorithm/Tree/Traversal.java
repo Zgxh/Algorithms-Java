@@ -1,5 +1,8 @@
 package DataStructureAndAlgorithm.Tree;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 import java.util.Stack;
 
 public class Traversal {
@@ -68,5 +71,64 @@ public class Traversal {
         }
     }
 
-    public static void postOrder
+    /**
+     * 二叉树的后序遍历，递归实现。
+     * @param root 二叉树的根
+     */
+    public void postOrderTraversalRec(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        postOrderTraversalRec(root.left);
+        postOrderTraversalRec(root.right);
+        System.out.println(root.val + "->");
+    }
+
+    /**
+     * 二叉树的后序遍历，非递归实现。
+     * @param root 二叉树的根
+     * @return 顺序排列的后序遍历二叉树结点列表
+     */
+    public List<Integer> postOrderTraversal(TreeNode root) {
+        List<Integer> result = new LinkedList<Integer>();
+        if (root == null) {
+            return result;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        TreeNode temp = null;
+        while (!stack.empty()) {
+            temp = stack.pop();
+            result.add(0, temp.val);
+            if (temp.left != null) {
+                stack.push(temp.left);
+            }
+            if (temp.right != null) {
+                stack.push(temp.right);
+            }
+        }
+        return result;
+    }
+
+    /**
+     * 二叉树的层次遍历。使用队列辅助实现。
+     * @param root 二叉树的根结点
+     */
+    public void levelOrderTraversal(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+            System.out.println(node.val + "->");
+           if (node.left != null) {
+               queue.add(node.left);
+           }
+           if (node.right != null) {
+               queue.add(node.right);
+           }
+       }
+    }
 }
