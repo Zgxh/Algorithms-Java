@@ -2,6 +2,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Test",
+            "request": "launch",
+            "mainClass": "DataStructureAndAlgorithm.SyntaxTest.Test",
+            "projectName": "learningTest_25ef6d5e"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - RPN",
+            "request": "launch",
+            "mainClass": "DataStructureAndAlgorithm.Stack.RPN",
+            "projectName": "learningTest_25ef6d5e"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Test",
+            "request": "launch",
+            "mainClass": "SyntaxTest.Test",
+            "projectName": "learningTest_25ef6d5e"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - KMP",
             "request": "launch",
             "mainClass": "DataStructureAndAlgorithm.String.KMP",
