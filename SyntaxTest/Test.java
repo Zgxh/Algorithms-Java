@@ -1,4 +1,4 @@
-package DataStructureAndAlgorithm.SyntaxTest;
+package SyntaxTest;
 
 public class Test {
     public static void main(String[] args) {
