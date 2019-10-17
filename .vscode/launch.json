@@ -2,6 +2,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Algo2",
+            "request": "launch",
+            "mainClass": "SyntaxTest.Algo2",
+            "projectName": "learningTest_25ef6d5e"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Algo1",
+            "request": "launch",
+            "mainClass": "SyntaxTest.Algo1",
+            "projectName": "learningTest_25ef6d5e"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ReversePolandNotation",
+            "request": "launch",
+            "mainClass": "DataStructureAndAlgorithm.Stack1.ReversePolandNotation",
+            "projectName": "learningTest_25ef6d5e"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - BinarySortTreeDemo",
             "request": "launch",
             "mainClass": "DataStructureAndAlgorithm.Tree.BinarySortTreeDemo",

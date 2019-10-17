@@ -1,6 +1,7 @@
 package DataStructureAndAlgorithm.Stack1;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
@@ -8,11 +9,11 @@ public class ReversePolandNotation {
 
 
     /**
-     * 将中缀表达式转换为逆波兰表达式。
+     * 将中缀表达式字符串进行拆分成String。
      * @param s 中缀表达式字符串
      * @return 分隔的逆波兰表达式列表
      */
-    public static List<String> toInfixExpressionList(String s) {
+    public static String[] toInfixExpressionList(String s) {
         List<String> ls = new ArrayList<>();
         int i = 0;
         char c;
@@ -25,14 +26,15 @@ public class ReversePolandNotation {
                 i++;
             } else { //如果是数字，考虑多位数字的情况，对数字进行拼接
                 str = "";
-                while (i < s.length() && (c = s.charAt(i)) < 48 && (c = s.charAt(i)) > 57) {
+                while (i < s.length() && (c = s.charAt(i)) >= 48 && (c = s.charAt(i)) <= 57) {
                     str += c;
                     i++;
                 }
                 ls.add(str);
             }
         }
-        return ls;
+        String[] result = ls.toArray(new String[0]);
+        return result;
     }
 
     /**
@@ -68,8 +70,10 @@ public class ReversePolandNotation {
     }
 
     public static void main(String[] args) {
-        String expression = "1+((2+3)*4)-5";
-        List<String> infixExpressionList = toInfixExpressionList(expression);
-        System.out.println(infixExpressionList);
+        String expression = "1+((2+3)*4)-50";
+        String[] infixExpressionList = toInfixExpressionList(expression);
+        Arrays.stream(infixExpressionList).forEach(System.out::println);
+
+        
     }
 }
