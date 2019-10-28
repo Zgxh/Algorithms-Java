@@ -1,6 +1,6 @@
 package DataStructureAndAlgorithm.Sort;
 
-import java.util.*;
+import java.util.Arrays;
 
 class MainFunction {
 
@@ -15,6 +15,6 @@ class MainFunction {
         // QuickSort.quickSort(input, 0, input.length - 1);
         // InsertionSort.insertionSort(input);
         ShellSort.shellSort(input);
-        Arrays.stream(input).forEach(System.out::println);
+        Arrays.stream(input).forEach(System.out::print);
     }
 }

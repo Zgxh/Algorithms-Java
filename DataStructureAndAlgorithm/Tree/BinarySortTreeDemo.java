@@ -127,16 +127,31 @@ class Node {
     }
 }
 
+class SubNode extends Node {
+    int value;
+    SubNode left;
+    SubNode right;
+
+    SubNode(int value) {
+        super(value);
+        this.value = value;
+    }
+
+    public int height() {
+        return left.height();
+    }
+}
+
 /**
  * 定义二叉排序树
  */
 class BinarySortTree {
 
     // 根节点
-    private Node root;
+    public Node root;
 
     // 查找要删除的结点
-    private Node search(int value) {
+    public Node search(int value) {
         if (root == null) {
             return null;
         } else {
@@ -145,7 +160,7 @@ class BinarySortTree {
     }
 
     // 查找要删除的结点的父节点
-    private Node searchParent(int value) {
+    public Node searchParent(int value) {
         if (root == null) {
             return null;
         } else {
