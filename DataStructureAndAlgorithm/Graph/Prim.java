@@ -23,6 +23,7 @@ public class Prim {
         MinSpanningTree mst = new MinSpanningTree();
         MGraph graph = mst.createGraph(vertex, data, weight);
         mst.showGraph(graph);
+        mst.prim(graph, 0);
     }
 }
 
@@ -54,6 +55,38 @@ class MinSpanningTree {
     public void showGraph(MGraph graph) {
         for (int[] row : graph.weight) {
             System.out.println(Arrays.toString(row));
+        }
+    }
+
+    /**
+     * Use prim algorithm to create a minimum spanning tree. Find the current minimum weight
+     * from visited nodes constantly, and add the corresponding edge into MST.
+     * @param graph the input graph expressed as weight matrix
+     * @param v the index of the node to start with
+     */
+    public void prim(MGraph graph, int v) {
+        // mark node if it has been visited, initial value is 0, mark visited as 1
+        int[] visited = new int[graph.vertex];
+        visited[v] = 1;
+        // h1 and h2 are used to mark the index of the minimum edge
+        int h1 = -1;
+        int h2 = -1;
+        // for n nodes in a MST, there are n-1 edges. traverse them and add it into MST
+        for (int e = 1; e < graph.vertex; e++) {
+            // mark the current minimum weight as minWeight in Prim
+            int minWeight = Integer.MAX_VALUE;
+            // Traverse all the visited node, and find the current minimum weight. Then add the edge.
+            for (int i = 0; i < graph.vertex; i++) {
+                for (int j = 0; j < graph.vertex; j++) {
+                    if (visited[i] == 1 && visited[j] == 0 && graph.weight[i][j] < minWeight) {
+                        minWeight = graph.weight[i][j];
+                        h1 = i;
+                        h2 = j;
+                    }
+                }
+            }
+            visited[h2] = 1;
+            System.out.println("edge: <" + graph.data[h1] + "," + graph.data[h2] + "> weight: " + minWeight);
         }
     }
 }
