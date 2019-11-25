@@ -14,7 +14,9 @@ class MainFunction {
         // MergeSortPlus.mergeSort(input);
         // QuickSort.quickSort(input, 0, input.length - 1);
         // InsertionSort.insertionSort(input);
-        ShellSort.shellSort(input);
-        Arrays.stream(input).forEach(System.out::print);
+//        ShellSort.shellSort(input);
+        ImprovedQuickSort.improvedQuickSort(input, 0, input.length - 1);
+//        Arrays.stream(input).forEach(System.out::print);
+        System.out.println(Arrays.toString(input));
     }
 }
