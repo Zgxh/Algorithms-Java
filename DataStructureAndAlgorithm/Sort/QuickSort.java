@@ -49,6 +49,7 @@ public class QuickSort {
 class ImprovedQuickSort {
     public static void improvedQuickSort(int[] array, int L, int R) {
         if (L < R) {
+            swap(array, R, L + (int) Math.random() * (R - L + 1)); // 随机选择一个基准与R位置交换
             int[] index = partition(array, L, R);
             improvedQuickSort(array, L, index[0] - 1);
             improvedQuickSort(array, index[1] + 1, R);
