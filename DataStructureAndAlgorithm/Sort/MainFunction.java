@@ -15,8 +15,10 @@ class MainFunction {
         // QuickSort.quickSort(input, 0, input.length - 1);
         // InsertionSort.insertionSort(input);
 //        ShellSort.shellSort(input);
-        ImprovedQuickSort.improvedQuickSort(input, 0, input.length - 1);
+//        ImprovedQuickSort.improvedQuickSort(input, 0, input.length - 1);
 //        Arrays.stream(input).forEach(System.out::print);
-        System.out.println(Arrays.toString(input));
+        int[] result = CountSort.countSort(input);
+//        System.out.println(Arrays.toString(input));
+        System.out.println(Arrays.toString(result));
     }
 }
