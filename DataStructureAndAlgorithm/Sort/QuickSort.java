@@ -19,6 +19,8 @@ public class QuickSort {
 
     /**
      * 进行一趟快速排序，并找到基准元素的最后落脚点。
+     * 保证左边的小于等于分割点，右边的大于分割点。
+     *
      * @param array 待排序数组
      * @param low 待排序子序列左端点
      * @param high 待排序子序列右端点
@@ -31,7 +33,7 @@ public class QuickSort {
                 high--;
             }
             array[low] = array[high];
-            while (low < high && array[low] < temp) {
+            while (low < high && array[low] <= temp) {
                 low++;
             }
             array[high] = array[low];
