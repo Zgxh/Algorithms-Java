@@ -3,6 +3,8 @@ package DataStructureAndAlgorithm.index;
 import java.util.Random;
 
 /**
+ * [代码不完善，有小错误]
+ *
  * 跳表 skip list 数据结构， 采用 链表 + 多级索引 的结构，牺牲空间换时间。
  * 查询、插入、删除的时间复杂度：O(log n)
  *
