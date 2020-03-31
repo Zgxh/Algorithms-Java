@@ -12,7 +12,7 @@ public class QuickSort {
         if (array == null || array.length == 0 || low >= high) {
             return;
         }
-        int mid = getMiddle(array, low, high);
+        int mid = partition(array, low, high);
         quickSort(array, low, mid - 1);
         quickSort(array, mid + 1, high);
     }
@@ -26,7 +26,7 @@ public class QuickSort {
      * @param high 待排序子序列右端点
      * @return 一趟快排后找出的中点
      */
-    private static int getMiddle(int[] array, int low, int high) {
+    private static int partition(int[] array, int low, int high) {
         int temp = array[low];
         while (low < high) {
             while (low < high && array[high] > temp) {
