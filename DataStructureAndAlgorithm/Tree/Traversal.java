@@ -1,9 +1,6 @@
 package DataStructureAndAlgorithm.Tree;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 public class Traversal {
 
@@ -85,12 +82,12 @@ public class Traversal {
     }
 
     /**
-     * 二叉树的后序遍历，非递归实现。
+     * 二叉树的后序遍历，非递归实现。（这个版本没有真正体现后序遍历的思想）
      * @param root 二叉树的根
      * @return 顺序排列的后序遍历二叉树结点列表
      */
     public List<Integer> postOrderTraversal(TreeNode root) {
-        List<Integer> result = new LinkedList<Integer>();
+        List<Integer> result = new LinkedList();
         if (root == null) {
             return result;
         }
@@ -107,6 +104,40 @@ public class Traversal {
                 stack.push(temp.right);
             }
         }
+        return result;
+    }
+
+    /**
+     * 二叉树的后序遍历方法2.非递归实现。（真正体现后序遍历的思想）
+     * @param root
+     * @return
+     */
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList();
+        if (root == null) {
+            return result;
+        }
+        LinkedList<TreeNode> stack = new LinkedList();
+        stack.addFirst(root);
+        TreeNode lastTraversal = root;
+        TreeNode stackTop = null;
+        while (!stack.isEmpty()) {
+            stackTop = stack.getFirst();
+            // 若left不null，并且不是从左右回来的，则说明左边还未遍历
+            if (stackTop.left != null && lastTraversal != stackTop.left
+                    && lastTraversal != stackTop.right) {
+                stack.push(stackTop.left);
+            } else if (stackTop.right != null
+                    && stackTop.right != lastTraversal) {
+                // 若right不null，并且不是从right回来的，则说明右边还未遍历
+                stack.push(stackTop.right);
+            } else { // 若不满足以上两项，则说明左右为空，或者是已经遍历完了左右子树，则后序遍历该结点
+                result.add(stackTop.val);
+                stack.removeFirst();
+                lastTraversal = stackTop;
+            }
+        }
+
         return result;
     }
 
