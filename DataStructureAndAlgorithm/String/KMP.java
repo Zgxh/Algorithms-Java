@@ -9,55 +9,53 @@ public class KMP {
 
     /**
      * KMP算法。
-     * @param str1 主串
-     * @param str2 模式串
+     * @param str 主串
+     * @param pattern 模式串
      * @return 返回模式串在主串中的位置，即第一个相同字符的位置；若匹配失败则返回-1
      */
-    public static int kmp(String str1, String str2) {
-        int[] next = getKmpNext(str2);
-        for (int i = 0, j = 0; i < str1.length(); i++) {
-            /**
-             * 若匹配失败，把模式串右移j-next[j-1]。
-             * 1.如果匹配上了，就跳出while接着比较下一个位置。
-             * 2.j变0了，跳出while，并比较下个i的str1和str2[0],然后依次进行。
-             * 3.j没变0，同时该位置也没匹配上，那就继续模式串右移j-next[j-1]。
-             */
-            while (j > 0 && str1.charAt(i) != str2.charAt(j)) {
+    public static int kmp(String str, String pattern) {
+        int[] next = getKmpNext(pattern);
+        int sLen = str.length(), pLen = pattern.length();
+        for (int i = 0, j = 0; i < sLen; i++) {
+            while (j > 0 && str.charAt(i) != pattern.charAt(j)) { // 匹配失败，则字符串右移到合适的位置
                 j = next[j - 1];
             }
             //该位置匹配成功则二者同时走向下一个位置
-            if (str1.charAt(i) == str2.charAt(j)) {
+            if (str.charAt(i) == pattern.charAt(j)) {
                 j++;
             }
-            //匹配成功返回：模式串在主串中第一个字符相等的位置
-            if (j == str2.length()) {
-                return i - j + 1;
+            //匹配成功返回已匹配字符串在主串中的位置
+            if (j == pLen) {
+                return i - (pLen - 1);
             }
         }
+
         //匹配失败返回-1
         return -1;
     }
 
     /**
-     * 获取部分匹配表。每个位置元素对应模式串数组开头对应元素的index+1。
-     * @param dest 模式串
-     * @return 部分匹配表
+     * 获取部分匹配表的next[]数组。next[]数组代表以i为结尾的子串中最长公共前后缀长度。
+     * 若在第i个元素处不匹配，则模式串位置返回到next[i-1]的值对应的位置。
+     * 即返回到已匹配字符长度处。因为从next[i-1]-1及之前都是匹配的。
      */
     private static int[] getKmpNext(String dest) {
-        int[] next = new int[dest.length()];
-        //若字符串长度为1，则部分匹配值为0
+        int len = dest.length();
+        int[] next = new int[len];
+        // 若字符串长度为1，则部分匹配值为0
         next[0] = 0;
-        for (int i = 1, j = 0; i < dest.length(); i++) {
-            //前缀与后缀不匹配时
+        for (int i = 1, j = 0; i < len; i++) {
+            // 前缀与后缀不匹配时，一直找到匹配的位置，若一直不匹配则回到模式串的开头位置0处
             while (j > 0 && dest.charAt(i) != dest.charAt(j)) {
                 j = next[j - 1];
             }
-            //当前缀与后缀匹配时
+            // 当前缀与后缀匹配时
             if (dest.charAt(i) == dest.charAt(j)) {
                 j++;
             }
-            next[i] = j;
+            next[i] = j; // 记录最长公共前后缀的长度
         }
+
         return next;
     }
 
