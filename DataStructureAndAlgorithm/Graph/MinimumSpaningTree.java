@@ -12,6 +12,8 @@ public class MinimumSpaningTree {
      * （2）每次取权值最小的边，如果两个顶点属于不同的等价类，则把这条边加入MST，
      *     并合并两个等价类，直到最后只剩一个等价类。
      *
+     * 例题：leetcode 1584 连接所有点的最小费用
+     *
      */
     public void kruskal() {
         // implementation

@@ -9,6 +9,8 @@ package DataStructureAndAlgorithm.Graph;
  * 3. 更新完之后，再次从未访问结点中选择权值最小的minNode，此时start到minNode的权值即为二者间最短距离，标记它已访问，然后进行步骤2；
  * 4. 重复步骤2、3，直到所有节点都已访问，即start到所有节点的最小距离都求得。
  *
+ * 时间复杂度：O(n^2), 空间复杂度：O(n)，如果不算邻接矩阵的话
+ *
  * @author Yu Yang
  * @create 2021-02-28 22:59
  */
@@ -55,4 +57,42 @@ public class Dijkstra {
 
         return shortPath;
     }
+
+//    class Solution {
+//        public:
+//        int networkDelayTime(vector<vector<int>>& times, int N, int K) {
+//            unordered_map<int, vector<pair<int, int>>> graph;
+//            for (const auto& edge : times) {
+//                graph[edge[0]].push_back({edge[1], edge[2]});
+//            }
+//
+//            priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> minHeap;
+//            minHeap.push({0, K});
+//
+//            unordered_map<int, int> dist;
+//
+//            while (!minHeap.empty()) {
+//                pair<int, int> info = minHeap.top();
+//                minHeap.pop();
+//                int d = info.first;
+//                int node = info.second;
+//                if(dist.find(node) != dist.end()) continue;
+//                dist[node] = d;
+//                for (const auto& edge : graph[node]) {
+//
+//                    int nei = edge.first;
+//                    int d2 = edge.second;
+//                    if (dist.find(nei) == dist.end()) {
+//                        minHeap.push({d + d2, nei});
+//                    }
+//                }
+//            }
+//            if (dist.size() != N) return -1;
+//            int ans = 0;
+//            for (const auto& d : dist) {
+//                ans = max(ans, d.second);
+//            }
+//            return ans;
+//        }
+//    };
 }
